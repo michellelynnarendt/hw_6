@@ -1,6 +1,7 @@
 ---
 title: "hw_6qmd"
 format: pdf
+bibliography: references.bib
 execute:
   echo: false
 fig-width: 6.5
@@ -9,8 +10,7 @@ fig-height: 8
 
 Our scripts file is named "hw6scripts"; the data file is "hw6data."
 
-To my groupmates: I wasn't sure what packages you'd want to use for making tables,
-so this code includes all discussed in class on Wednesday. I installed them during class
+To my groupmates: I wasn't sure what packages you'd want to use for making tables, so this code includes all discussed in class on Wednesday. I installed them during class
 
 ```{r}
 library(rio)
@@ -27,4 +27,6 @@ library(gtsummary)
 star <- import(here("hw6data", "star.csv"))
 ```
 
+This homework was completed using R [@R]. The tidyverse package [@tidyverse] provides tools for data manipulation and visualization, while the knitr package [@knitr] was used for reproducible reporting.
 
+We read an article by @Nese2022, which examined the growth and predictive performance of oral reading fluency measures. Two other articles were published in the same journal. One examined racial-ethnic inequality in school access [@Speroni2026] and another investigated ethnic-racial identity projects in Brazil [@Callegari2026].
