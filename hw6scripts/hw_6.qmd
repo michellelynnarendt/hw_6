@@ -9,9 +9,9 @@ fig-width: 6.5
 fig-height: 8
 ---
 
-Our scripts file is named "hw6scripts"; the data file is "hw6data."
-
 # Commit 1
+
+Our scripts file is named "hw6scripts"; the data file is "hw6data."
 
 ```{r}
 #| message: false
