@@ -1,5 +1,6 @@
 ---
-title: "hw_6qmd"
+title: "Homework 6"
+author: "Michelle Arendt, Jiawen Long, Sijie Liu"
 format: pdf
 bibliography: references.bib
 execute:
@@ -10,28 +11,34 @@ fig-height: 8
 
 Our scripts file is named "hw6scripts"; the data file is "hw6data."
 
-To my groupmates: I wasn't sure what packages you'd want to use for making tables, so this code includes all discussed in class on Wednesday. I installed them during class
+# Commit 1
 
 ```{r}
+#| message: false
+#| warning: false
+
 library(rio)
 library(here)
 library(tidyverse)
 library(knitr)
-library(gt)
-library(DT)
-library(reactable)
-library(gtsummary)
 ```
 
 ```{r}
 star <- import(here("hw6data", "star.csv"))
 ```
 
+# Commit 2
+
 This homework was completed using R [@R]. The tidyverse package [@tidyverse] provides tools for data manipulation and visualization, while the knitr package [@knitr] was used for reproducible reporting.
 
 We read an article by @Nese2022, which examined the growth and predictive performance of oral reading fluency measures. Two other articles were published in the same journal. One examined racial-ethnic inequality in school access [@Speroni2026] and another investigated ethnic-racial identity projects in Brazil [@Callegari2026].
 
+# Commit 3
+
 ```{r}
+#| message: false
+#| warning: false
+
 star |>
   group_by(sex, frl) |>
   summarize(
@@ -44,3 +51,34 @@ star |>
 ```
 
 The table shows the mean and standard deviation of math and reading scores by sex and FRL status
+
+# Commit 4
+
+```{r}
+#| message: false
+#| warning: false
+
+star |>
+  ggplot(aes(x = totexp, y = tmathss)) +
+  geom_point(size = 1, color = "gray70") +
+  geom_smooth(method = "lm", aes(color=frl)) +
+  labs(title = "Relation between teacher experience and math scores",
+       subtitle = "Separate regression lines displayed by free/reduced price lunch status",
+       x = "Teacher Experience (years)", 
+       y = "Total Math Scale Score",
+       color = "Lunch status") +
+  scale_color_discrete(
+    breaks = c("yes", "no"),
+    labels = c("yes" = "Free/Reduced Price Meals", "no" = "Paid Meals"))+
+  theme_minimal() +
+  theme(legend.position = "bottom", legend)
+```
+
+The plot shows the relationship between teacher experience and math scores, with separate linear regression lines for students from families of different income levels (as indicated by their lunch status: receiving free/reduced price meals or not). The slopes for both regression lines are similarly positive, indicating that teacher experience has a comparable positive effect on math scores regardless of their household income condition. However, students coming from lower-income families (receiving free/reduced price meals) tend to have lower math scores overall compared to their peers who do not receive free/reduced price meals.
+
+\newpage
+
+# References
+
+
+
